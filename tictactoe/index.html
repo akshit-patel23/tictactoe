@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Poppins:wght@200;300;400&display=swap');
+        body{
+            margin: 0;
+            padding: 0;
+            overflow-x:hidden;
+            overflow-y: hidden;
+        }
+        .main{
+            width: 100vw;
+            height: 100vh;
+            background-color: #92A7BC;
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        .board{
+            height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url(paperbg.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            background-blend-mode: lighten;
+        }
+        .board table{
+            border-collapse: collapse;
+        }
+        
+        .box{
+            border:5px solid black;
+            width: 8vw;
+            height: 16vh;
+            text-align: center;
+            font-size: xx-large;
+           
+        }
+        .dashboard{
+            display: flex;
+            width: 100vw;
+            height: 12vh;
+            background-color: #70493A;
+            opacity: 0.9;
+            color: aliceblue;
+            justify-content: space-between;
+        }
+        .x{
+            color: red;
+        }
+        .o{
+            color: green;
+        }
+        
+        .logo{
+            text-align: left;
+            margin-inline: 1%;
+            display: flex;
+            flex-direction: row;
+        }
+        .dashitem{
+            
+            padding: 1%;
+            justify-content: space-between;
+            align-self: center;
+            margin: 1%;
+        }
+        #resbtn{
+            background-color: #462518;
+            color: aliceblue;
+            padding:10%;
+            border-radius: 4px;
+            font-size: larger;
+        }
+        
+        #movemess{
+            font-size: large;
+        }
+        @media(max-width:600px){
+            .box{
+                width: 19vw;
+                height: 10vh;
+            }
+            .dashboard{
+                justify-content: space-evenly;
+            }
+        }
+        
+    </style>
+     
+</head>
+<body>
+    <div class="main">
+        <div class="dashboard">
+            <div class="logo">
+                <img style="margin-right:10px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACBElEQVR4nO2ZXU4CMRRG6yLARHkU3bp/8KIuQFGDgi+Ku8AHWIDHXLmaps7ITEubzmS+pKG5CTBn2sK5YEyXFgaYyvB43r0Mk0uATzbZq/m875hcQgeySey7fAe8APtWrQ/MgYeYKwIMgAtgrWMMHIccYMm7wCjEm9ZmsUCAE+CDv5HawAekZ134uzWXx35EkLGWr4FDHTKXnNcG0Re1V0GycCEigKy1fOhsNcmqSSArLQ92AuJALJx5zK010vKNAgx0Lrn0AZnZF65n5lVr84ggQ2BJ8WEf+n78Ptt3X2GkNokFItEDfqbbTMYlcGRip/tm15hcQk6uBUxoXu7LDnfTMmnv1mo1CH91+rzIQF0QqwXo/9cCJAGhXKeXLkwByNSygtIWIBXIWN/naptOF4DYOrMoawFSgayr6nTRGXH6mTLZTAKyqqrTuYOMqup0ydba2gKkAhmW6PTS1ekCkEotQBKQEp0+BQ5MtY/frS1AMpDWfCE2EoTND8qtsN9bmpe79m6tkHQgmmw1PgSETcs9L2gBXrw6whCNDwR5sk1ZhxgCPn/vBWl8IEjfcbMfCFGcXnKN9wWROKvwszr1IXah8TmBjHw1fodb682Z95JqfCDIzD4TTm/zVBskROMDQaaq+793X2EE8NELpMYFdYoiMbmEFq3IrY9Sa0u8WxXvYvLIF9gotlD/3jmoAAAAAElFTkSuQmCC"><h2>Tic-Tac-Toe</h2> 
+            </div>
+            
+            <div class="dashitem">
+                <a href="#" onclick="resetBoard()" id="resbtn"><i class="fa fa-refresh">&nbsp;&nbsp;Reset</i></a>
+            </div>
+        </div>
+        <div class="board">
+            <div id="movemess">
+             <span class="x">X's</span> Move
+            </div>
+            <table>
+                <tr>
+                    <td class="box" id="1"></td>
+                    <td class="box" id="2"></td>
+                    <td class="box" id="3"></td>
+                </tr>
+                <tr>
+                    <td class="box" id="4"></td>
+                    <td class="box" id="5"></td>
+                    <td class="box" id="6"></td>
+                </tr>
+                <tr>
+                    <td class="box" id="7"></td>
+                    <td class="box" id="8"></td>
+                    <td class="box" id="9"></td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+    
+    
+
+    <script>
+
+        function checkWinner(){
+            var winComb=[
+                [1,2,3],
+                [4,5,6],
+                [7,8,9],
+                [1,4,7],
+                [2,5,8],
+                [3,6,9],
+                [1,5,9],
+                [3,5,7]
+            ];
+
+            for(var i=0;i<winComb.length;i++){
+                var comb=winComb[i];
+                var box1=document.getElementById(comb[0]).innerHTML;
+                var box2=document.getElementById(comb[1]).innerHTML;
+                var box3=document.getElementById(comb[2]).innerHTML;
+
+                if(box1===box2 && box2===box3 && box1!==''){
+                    setTimeout(function(){
+                        alert("Congratulations!\nPlayer "+box1+" is the winner!");
+                        resetBoard();
+                    },50);
+                    
+                    return;
+                }
+            }
+
+            if(mvcount==9){
+                setTimeout(function(){
+                    alert("It's a tie!\nThe game ends in a draw.");
+                    resetBoard();
+                },50);
+                
+            }
+        }
+
+        function resetBoard(){
+            document.getElementById('movemess').innerHTML="<span class='x'>X's</span> Move"  ;
+            boxes.forEach(function(box){
+                box.innerHTML=null;
+            });
+            mvcount=0;
+        }
+        
+        
+        var boxes= document.querySelectorAll('.box');
+        var mvcount=0;
+        
+        boxes.forEach(function(box){
+            box.addEventListener("click",function(){
+                if(box.innerHTML.trim()===''){
+                    if(mvcount%2==0){
+                        
+                        box.innerHTML="X";
+                        box.classList.remove('o');
+                        box.classList.add('x');
+                        mvcount++;
+                        document.getElementById('movemess').innerHTML="<span class='o'>O's</span> Move"  ;
+                    }
+                    else{
+                        
+                        box.innerHTML="O";
+                        box.classList.remove('x');
+                        box.classList.add('o');
+                        mvcount++;
+                        document.getElementById('movemess').innerHTML="<span class='x'>X's</span> Move"  ;
+                    }
+                    checkWinner();
+                }
+            })
+        })
+    </script>
+</body>
+</html>
