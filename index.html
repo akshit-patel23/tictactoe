@@ -26,7 +26,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-image: url(paperbg.jpg);
+            background-image: url(media/images/paperbg.jpg);
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
@@ -187,13 +187,13 @@
         
         var boxes= document.querySelectorAll('.box');
         var mvcount=0;
-        var xSound= new Audio('xsound.mp3');
+        var xSound= new Audio('media/soundeffects/xsound.mp3');
         xSound.volume=0.1;
-        var oSound= new Audio('osound.mp3');
+        var oSound= new Audio('media/soundeffects/osound.mp3');
         oSound.volume=0.1;
-        var winSound=new Audio('success.mp3');
+        var winSound=new Audio('media/soundeffects/success.mp3');
         winSound.volume=0.1;
-        var tieSound=new Audio('draw.mp3');
+        var tieSound=new Audio('media/soundeffects/draw.mp3');
         tieSound.volume=0.1;
         boxes.forEach(function(box){
             box.addEventListener("click",function(){
