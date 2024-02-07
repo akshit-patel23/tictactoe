@@ -156,6 +156,7 @@
                 var box3=document.getElementById(comb[2]).innerHTML;
 
                 if(box1===box2 && box2===box3 && box1!==''){
+                    winSound.play();
                     setTimeout(function(){
                         alert("Congratulations!\nPlayer "+box1+" is the winner!");
                         resetBoard();
@@ -165,7 +166,8 @@
                 }
             }
 
-            if(mvcount==9){
+            if(mvcount===9){
+                tieSound.play();
                 setTimeout(function(){
                     alert("It's a tie!\nThe game ends in a draw.");
                     resetBoard();
@@ -185,12 +187,19 @@
         
         var boxes= document.querySelectorAll('.box');
         var mvcount=0;
-        
+        var xSound= new Audio('xsound.mp3');
+        xSound.volume=0.1;
+        var oSound= new Audio('osound.mp3');
+        oSound.volume=0.1;
+        var winSound=new Audio('success.mp3');
+        winSound.volume=0.1;
+        var tieSound=new Audio('draw.mp3');
+        tieSound.volume=0.1;
         boxes.forEach(function(box){
             box.addEventListener("click",function(){
                 if(box.innerHTML.trim()===''){
                     if(mvcount%2==0){
-                        
+                        xSound.play();
                         box.innerHTML="X";
                         box.classList.remove('o');
                         box.classList.add('x');
@@ -198,7 +207,7 @@
                         document.getElementById('movemess').innerHTML="<span class='o'>O's</span> Move"  ;
                     }
                     else{
-                        
+                        oSound.play();
                         box.innerHTML="O";
                         box.classList.remove('x');
                         box.classList.add('o');
