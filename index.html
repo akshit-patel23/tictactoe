@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Tic Tac Toe</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&display=swap');
@@ -21,12 +22,12 @@
         }
         
         .board{
-            height: 88vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-image: url(media/images/paperbg.jpg);
+            background-image: url(media/images/backimg.jpg);
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
@@ -38,8 +39,8 @@
         
         .box{
             border:5px solid black;
-            width: 8vw;
-            height: 16vh;
+            width: 8vmax;
+            height: 16vmin;
             text-align: center;
             font-size: xx-large;
            
@@ -47,10 +48,10 @@
         .dashboard{
             display: flex;
             width: 100vw;
-            height: 12vh;
-            background-color: #70493A;
+            height: 10vh;
+            background-color: #573B2A;
             opacity: 0.9;
-            color: aliceblue;
+            color: aliceblue; 
             justify-content: space-between;
         }
         .x{
@@ -62,37 +63,65 @@
         
         .logo{
             text-align: left;
-            margin-inline: 1%;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+        }
+        .logo img{
+            width: 30vmax;
+            height: 8vmin;
+            margin: 2%;
+            justify-self:center;
+            align-self: center;
         }
         .dashitem{
-            
-            padding: 1%;
-            justify-content: space-between;
-            align-self: center;
-            margin: 1%;
+            padding: 8px; 
+            margin:10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            /* width: 14vw; */
+        }
+        .btntext{
+            margin:0;
+            padding: 0;
+            padding-inline: 11%;
+            font-family: 'Playpen Sans', cursive;;
         }
         #resbtn{
-            background-color: #462518;
-            color: aliceblue;
-            padding:10%;
-            border-radius: 4px;
-            font-size: larger;
+            background-color: #2d1e15;
+            color: whitesmoke;
+            padding:8px;
+            margin:5px;
+            border:none;
+            border-radius: 8px;
+            display: flex;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 2px 2px #F4ED2C;
+            width:auto;
         }
-        
+        #resbtn:active{
+            box-shadow:-2px -2px #F4ED2C;
+        }
         #movemess{
             font-size: large;
+        }
+        #audcntrl{
+            margin:5px;
+            text-decoration: none;
+            color: white;
+            width:20px;
         }
         @media(max-width:600px){
             .box{
                 width: 19vw;
                 height: 10vh;
             }
-            .dashboard{
-                justify-content: space-evenly;
+            .dashitem{
+                width:auto;
             }
+
         }
+        
         
     </style>
      
@@ -101,11 +130,13 @@
     <div class="main">
         <div class="dashboard">
             <div class="logo">
-                <img style="margin-right:10px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACBElEQVR4nO2ZXU4CMRRG6yLARHkU3bp/8KIuQFGDgi+Ku8AHWIDHXLmaps7ITEubzmS+pKG5CTBn2sK5YEyXFgaYyvB43r0Mk0uATzbZq/m875hcQgeySey7fAe8APtWrQ/MgYeYKwIMgAtgrWMMHIccYMm7wCjEm9ZmsUCAE+CDv5HawAekZ134uzWXx35EkLGWr4FDHTKXnNcG0Re1V0GycCEigKy1fOhsNcmqSSArLQ92AuJALJx5zK010vKNAgx0Lrn0AZnZF65n5lVr84ggQ2BJ8WEf+n78Ptt3X2GkNokFItEDfqbbTMYlcGRip/tm15hcQk6uBUxoXu7LDnfTMmnv1mo1CH91+rzIQF0QqwXo/9cCJAGhXKeXLkwByNSygtIWIBXIWN/naptOF4DYOrMoawFSgayr6nTRGXH6mTLZTAKyqqrTuYOMqup0ydba2gKkAhmW6PTS1ekCkEotQBKQEp0+BQ5MtY/frS1AMpDWfCE2EoTND8qtsN9bmpe79m6tkHQgmmw1PgSETcs9L2gBXrw6whCNDwR5sk1ZhxgCPn/vBWl8IEjfcbMfCFGcXnKN9wWROKvwszr1IXah8TmBjHw1fodb682Z95JqfCDIzD4TTm/zVBskROMDQaaq+793X2EE8NELpMYFdYoiMbmEFq3IrY9Sa0u8WxXvYvLIF9gotlD/3jmoAAAAAElFTkSuQmCC"><h2>Tic-Tac-Toe</h2> 
+                <img src="media\images\logo-no-background.png"> 
             </div>
             
             <div class="dashitem">
-                <a href="#" onclick="resetBoard()" id="resbtn"><i class="fa fa-refresh">&nbsp;&nbsp;Reset</i></a>
+                <a href="#" id="audcntrl" onclick="Audiocntrl()"></a>
+                
+                <button onclick="resetBoard()" class="fa fa-refresh" id="resbtn"><p class="btntext">Reset</p></button>
             </div>
         </div>
         <div class="board">
@@ -156,7 +187,10 @@
                 var box3=document.getElementById(comb[2]).innerHTML;
 
                 if(box1===box2 && box2===box3 && box1!==''){
-                    winSound.play();
+                    if(!unmute){
+                        winSound.play();
+                    }
+                    
                     setTimeout(function(){
                         alert("Congratulations!\nPlayer "+box1+" is the winner!");
                         resetBoard();
@@ -167,7 +201,10 @@
             }
 
             if(mvcount===9){
-                tieSound.play();
+                if(!unmute){
+                    tieSound.play();
+                }
+                
                 setTimeout(function(){
                     alert("It's a tie!\nThe game ends in a draw.");
                     resetBoard();
@@ -183,18 +220,42 @@
             });
             mvcount=0;
         }
+
+        function Audiocntrl(){
+            if(unmute){
+                audcntrl.className="fa fa-volume-up";
+                xSound.volume=0.1;
+                oSound.volume=0.1;
+                winSound.volume=0.1;
+                tieSound.volume=0.1;
+                unmute=false;
+
+            }
+            else{
+                audcntrl.className="fas fa-volume-mute volumen";
+                xSound.volume=0;
+                oSound.volume=0;
+                winSound.volume=0;
+                tieSound.volume=0;
+                unmute=true;
+
+            }
+        }
         
         
         var boxes= document.querySelectorAll('.box');
         var mvcount=0;
         var xSound= new Audio('media/soundeffects/xsound.mp3');
-        xSound.volume=0.1;
+        
         var oSound= new Audio('media/soundeffects/osound.mp3');
-        oSound.volume=0.1;
+        
         var winSound=new Audio('media/soundeffects/success.mp3');
-        winSound.volume=0.1;
+        
         var tieSound=new Audio('media/soundeffects/draw.mp3');
-        tieSound.volume=0.1;
+        
+        var unmute;
+        var audcntrl=document.getElementById('audcntrl');
+        Audiocntrl();
         boxes.forEach(function(box){
             box.addEventListener("click",function(){
                 if(box.innerHTML.trim()===''){
